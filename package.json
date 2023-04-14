@@ -1,0 +1,20 @@
+{
+  "name": "mirco-service-scarford",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samyCode3/mirco-service-scarford.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samyCode3/mirco-service-scarford/issues"
+  },
+  "homepage": "https://github.com/samyCode3/mirco-service-scarford#readme"
+}
