@@ -1,9 +1,11 @@
 import * as express from 'express'
 import {setup} from '../worker/awilix'
 import { Router } from '../routes/auth.routes'
+import { database} from '../config/database.config'
+
 setup()
 const router = new Router()
-import * as bodyParser from 'body-parser'
+const PORT = process.env.SERVER_PORT || 4000
 
 export class Express {
     public app
@@ -13,7 +15,8 @@ export class Express {
            this.loadRoutes()
     }
 
-    private loadRoutes () {
+    private async loadRoutes () {
+        database
         this.app.get('/', (req, res) => {
             res.send("Hello")
         })
@@ -24,6 +27,6 @@ export class Express {
             }
         })
 
-        this.app.listen(3000, () => console.log('App running on port 3000'))
+        this.app.listen(PORT, () => console.log(`App running on port ${PORT}`))
     }
 }
