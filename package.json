@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,22 @@
   "bugs": {
     "url": "https://github.com/samyCode3/mirco-service-scarford/issues"
   },
-  "homepage": "https://github.com/samyCode3/mirco-service-scarford#readme"
+  "homepage": "https://github.com/samyCode3/mirco-service-scarford#readme",
+  "dependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.16.0",
+    "@types/typescript": "^2.0.0",
+    "awilix": "^8.0.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.2.4",
+    "pg": "^8.10.0",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typeorm": "^0.3.15",
+    "typescript": "^5.0.4"
+  }
 }
