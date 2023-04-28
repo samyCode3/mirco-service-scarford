@@ -1,6 +1,7 @@
 import * as express from 'express'
 // import { database} from '../config/typeorm.config'
 import { connection } from '../config/mongoDb.config'
+import {ErrorHandler } from '../middleware/error/errorHandler'
 const PORT = process.env.SERVER_PORT || 4000
 
 export class Express {
@@ -22,6 +23,7 @@ export class Express {
                 return res.send("Route not found")
             }
         })
+        this.app.use(ErrorHandler)
 
         this.app.listen(PORT, () => console.log(`App running on port ${PORT}`))
     }
