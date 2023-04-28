@@ -1,10 +1,6 @@
 import * as express from 'express'
-import {setup} from '../worker/awilix'
-import { Router } from '../routes/auth.routes'
-import { database} from '../config/database.config'
-
-setup()
-const router = new Router()
+// import { database} from '../config/typeorm.config'
+import { connection } from '../config/mongoDb.config'
 const PORT = process.env.SERVER_PORT || 4000
 
 export class Express {
@@ -15,12 +11,12 @@ export class Express {
            this.loadRoutes()
     }
 
-    private async loadRoutes () {
-        database
+    private async loadRoutes () { 
+        // database
+        await connection()
         this.app.get('/', (req, res) => {
-            res.send("Hello")
+            res.send("Hello") 
         })
-        router.AuthRoute(this.app)
         this.app.all('*', (req, res) => {
             if(res.status(404)) {
                 return res.send("Route not found")

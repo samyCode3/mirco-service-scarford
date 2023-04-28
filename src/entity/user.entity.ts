@@ -1,6 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert } from "typeorm";
+import { ROLE } from '../interface/enum/enum'
+import { singleton } from 'tsyringe'
+// import {UserTI } from '../interface/user/user.interface'
+@singleton()
 @Entity()
-export class User {
+export class User{
         @PrimaryGeneratedColumn()
         id: number;
         @Column()
@@ -14,13 +18,15 @@ export class User {
         select: false,
         })
         status: boolean;
-
         @BeforeInsert()
         beforeInsertActions() {
         this.status = false;
         }
-        @Column()
+        @Column({ default : ROLE.user})
+        role: string = ROLE.user;
+        @Column({ default : Date.now()})
         created_At: string;
-        @Column()
+        @Column({ default : Date.now()})
         updated_At: string;
 }
+

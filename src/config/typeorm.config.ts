@@ -1,7 +1,6 @@
 import 'reflect-metadata'
 import { DataSource } from 'typeorm'
-import * as envConfig from 'dotenv'
-envConfig.config()
+
 export const database = new DataSource({
      "type" : "postgres",
      "host" : process.env.MYSQL_HOST as string,
@@ -15,10 +14,10 @@ export const database = new DataSource({
     synchronize: true,
     logging: true,
 })
-console.log(process.env.MYSQL_USER)
+
 database.initialize().then((db) => {
     if(db) {
-        console.log(' Database is connected')
+        console.log(`Database is connected successfully`)
     }
 }).catch((error) => {
     const err = new Error(`Database fails to connect: ${error.message}`)
