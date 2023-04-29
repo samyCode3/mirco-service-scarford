@@ -1,7 +1,9 @@
+import "reflect-metadata"
 import * as express from 'express'
-// import { database} from '../config/typeorm.config'
 import { connection } from '../config/mongoDb.config'
 import {ErrorHandler } from '../middleware/error/errorHandler'
+import { authRoute } from "../routes"
+
 const PORT = process.env.SERVER_PORT || 4000
 
 export class Express {
@@ -13,11 +15,9 @@ export class Express {
     }
 
     private async loadRoutes () { 
-        // database
-        await connection()
-        this.app.get('/', (req, res) => {
-            res.send("Hello") 
-        })
+        // database       
+         await connection()
+         this.app.use('/apiv1', authRoute)
         this.app.all('*', (req, res) => {
             if(res.status(404)) {
                 return res.send("Route not found")

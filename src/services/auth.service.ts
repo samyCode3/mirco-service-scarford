@@ -1,13 +1,12 @@
-
-export class AuthService {
-   public db
-   public user
-   constructor (user, db) {
-    this.user = user
-     this.db  = db
-   }
-     async createUser (payload) {
-       const user = await this.db.create(this.user)
-       return user 
-     }
+import UserSI from "../interface/user/user.interface";
+import UserModel from "../model/user.model";
+import BaseService from "../resources/base.service";
+import { injectable } from 'tsyringe'
+@injectable()
+export default class AuthService extends BaseService<UserSI> {
+          constructor(modelI?: UserModel){
+                  super(modelI)
+          }
 }
+
+

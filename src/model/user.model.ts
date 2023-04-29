@@ -12,7 +12,7 @@ export default class UserModel implements ModelI {
          password: {type: String, required: true},
          status : { type : Boolean, default: false},
          role : {type: String, default: ROLE.user},
-         token: {type: String, required: true},
+         token: {type: String, default: ''},
          reset_token: {type: String, default: ''}
      }, { timestamps : true})
      model: Model<any, any> = model<UserSI>('user', this.schema)

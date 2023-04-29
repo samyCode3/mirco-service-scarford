@@ -1,13 +1,9 @@
-
-export class AuthController {
-   public database
-   construtor ({db}) {
-      this.database = db
-      this.createUser = this.createUser.bind(this)
+import { autoInjectable } from "tsyringe";
+import BaseController from "../resources/base.controller";
+import AuthService from "../services/auth.service";
+@autoInjectable()
+export default class AuthController extends BaseController {
+   constructor(service?: AuthService){
+        super(service)
    }
-    async createUser(req, res) {
-         const user = await req.body
-         console.log(user)
-         res.send(user)
-    }
 }
